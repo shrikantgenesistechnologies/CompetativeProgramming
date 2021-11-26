@@ -10,20 +10,19 @@ public class VowelsAndConsonants {
         }
         return space;
     }
-    public static int findVowel(String text) {
+    public static int findVowel(String text, String characters) {
         int vowels = 0;
         for (int i = 0; i < text.length(); i++) {
-            if(text.charAt(i) == 'a' || text.charAt(i) == 'e' || text.charAt(i) == 'i' || text.charAt(i) == 'o' || text.charAt(i) == 'u' || text.charAt(i) == 'y') {
+            if(characters.contains(text.charAt(i))) {
                 vowels++;
             }
         }
         return vowels;
     }
-    public static int findConsonant(String text) {
+    public static int findConsonant(String text, String characters) {
         int consonants = 0;
         for (int i = 0; i < text.length(); i++) {
-            if(text.charAt(i) == ' ' || text.charAt(i) == 'a' || text.charAt(i) == 'e' || text.charAt(i) == 'i' || text.charAt(i) == 'o' || text.charAt(i) == 'u') {
-            } else {
+            if(!characters.contains(text.charAt(i))) {
                 consonants++;
             }
         }
@@ -32,8 +31,9 @@ public class VowelsAndConsonants {
     public static void main(String[] args) {
         String text = "Using wildcards in generic programming";
         text = text.toLowerCase();
+        String characters = "aeiouAEIOU";
         System.out.println("Words : " + findWord(text));
-        System.out.println("Vowels : " + findVowel(text));
-        System.out.println("Consonants : " + findConsonant(text));
+        System.out.println("Vowels : " + findVowel(text, characters));
+        System.out.println("Consonants : " + findConsonant(text, characters));
     }
 }
